@@ -2,10 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const app = express();
+const Fuse = require('fuse.js');
 const PORT = 5000;
 const csv = require('csv-parser');
-const { error } = require('console');
-const { type } = require('os');
 app.use(cors());
 app.use(express.json());
 
@@ -18,16 +17,36 @@ app.get('/getFighterInfo',(req,res)=>{
    console.log(req.query);
    const name = req.query.fighter.toLowerCase();
    result=[];
+   let found = false;
    fs.createReadStream(filePathFighter)
+
    .pipe(csv())
    .on('data',(row)=>{
-      if(row.name.toLowerCase().replace(/\s+/g, '') === name.toLowerCase().replace(/\s+/g, '')){
-         res.json(row);
+      if(found){
          return;
       }
+      const searchString = name.toLowerCase().replace(/\s+/g, '');
+    // Fuse.js options
+    const options = {
+      includeScore: true,   // Include the match score
+      threshold: 0.3,       // 0.3 corresponds to a 70% match (score is between 0 and 1)
+      keys: ['name']        // Specify the key to search within the row
+    };
+    const simpleRow = {
+      ...row,
+      name:row.name.toLowerCase().replace(/\s+/g,'')
+    }
+    const fuse = new Fuse([simpleRow], options);
+    const result = fuse.search(searchString);
+    if (result.length > 0 && result[0].score <= 0.3) {
+      res.json(row);  // Return the row if match is 70%
+      found = true;
+    }
    })
    .on('end',()=>{
-         res.status(404).json({message:"no data found"});
+      if(!found){
+         res.status(404).json({message:"no data found of that fighter"});
+      }
    })
    .on('error',()=>{
       console.log("wrong");

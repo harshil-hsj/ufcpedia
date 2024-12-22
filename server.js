@@ -16,15 +16,15 @@ app.get('/getFighterInfo',(req,res)=>{
    console.log(typeof(req));
    console.log(req.query);
    const name = req.query.fighter.toLowerCase();
-   result=[];
    let found = false;
+   result =[]
+   let maxClose = 1;
+   let finalResult ={};
    fs.createReadStream(filePathFighter)
-
+   
    .pipe(csv())
    .on('data',(row)=>{
-      if(found){
-         return;
-      }
+  
       const searchString = name.toLowerCase().replace(/\s+/g, '');
     // Fuse.js options
     const options = {
@@ -37,15 +37,22 @@ app.get('/getFighterInfo',(req,res)=>{
       name:row.name.toLowerCase().replace(/\s+/g,'')
     }
     const fuse = new Fuse([simpleRow], options);
+
     const result = fuse.search(searchString);
-    if (result.length > 0 && result[0].score <= 0.3) {
-      res.json(row);  // Return the row if match is 70%
-      found = true;
+    if (result.length > 0 && result[0].score <= 0.3 ) { 
+      if( result[0].score < maxClose){
+        finalResult = {...row};
+        maxClose = result[0].score;
+        found = true;
+      }
     }
    })
    .on('end',()=>{
       if(!found){
          res.status(404).json({message:"no data found of that fighter"});
+      }
+      else{
+         res.json(finalResult);
       }
    })
    .on('error',()=>{

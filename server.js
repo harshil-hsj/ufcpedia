@@ -3,6 +3,7 @@ const cors = require('cors');
 const fs = require('fs');
 const app = express();
 const Fuse = require('fuse.js');
+const fastcsv = require('fast-csv');
 const PORT = 5000;
 const csv = require('csv-parser');
 app.use(cors());
@@ -62,27 +63,49 @@ app.get('/getFighterInfo',(req,res)=>{
 });
 
 
+app.post('/addFightInfo', (req, res) => {
+  const newRow = [
+    ...Object.values(req.body)  // This will take all the values from req.body and add them to the array
+  ];
 
+  const rows = [];
+  
+  // Read the existing CSV file
+  fs.createReadStream(filePathFights)
+    .pipe(fastcsv.parse({ headers: false }))  // Assuming no headers in the file
+    .on('data', (row) => rows.push(row))  // Collect all rows
+    .on('end', () => {
+      // Step 1: Insert the new row after the header (second position)
+      rows.splice(1, 0, newRow);  // Insert the new row at the second position
 
+      // Step 2: Write the updated rows back to the CSV file
+      const writeStream = fs.createWriteStream(filePathFights);
+      const csvStream = fastcsv.format({ headers: false });  // Writing without headers
 
-// app.get('/get-data',(req,res)=>{
-//    console.log("getting data");
-//    result =[]
-//    fs.createReadStream(filePath)
-//    .pipe(csv())
-//    .on('data',(row)=>{
-//     result.push(row);
-//    })
-//    .on('end',()=>{
+      // Pipe the new data into the CSV file
+      csvStream.pipe(writeStream)
+        .on('end', () => {
+          console.log("Data added successfully");
+          res.status(200).json({ message: "Fight info added at the second row successfully!" });
+        })
+        .on('error', (error) => {
+          console.error("Error writing to CSV:", error);
+          res.status(500).json({ error: "Error writing to CSV file" });
+        });
 
-//       res.json(result[0]);
-//    })
-//    .on(error,()=>{
-//     res.status(500).json({error:'error reading CSV file'});
-//    });
+      // Write all the rows (with the new row at the second position)
+      rows.forEach((row) => {
+        csvStream.write(row);
+      });
 
-// }
-// );
+      csvStream.end();
+    })
+    .on('error', (error) => {
+      console.error("Error reading CSV file:", error);
+      res.status(500).json({ error: "Error reading CSV file" });
+    });
+});
+
    
 
 

@@ -1,8 +1,10 @@
 import './GetData.css';
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import UpdateData from './UpdateData.js'
 function GetData() {
+  const navigate = useNavigate();
   const [retData, setRetData] = useState({
     name:"",
     nickname:"",
@@ -12,7 +14,7 @@ function GetData() {
     height_cm:0,
     weight_in_kg:0,
     reach_in_cm: 0,
-    stance:0,
+    stance:"",
     date_of_birth:""
 });
   const [fighter,setFighterName ] = useState("fighter info");
@@ -50,16 +52,15 @@ function GetData() {
       
       <h2 >Name : {retData.name}</h2>
       <h3> {retData.nickname}</h3>
-      <p>Record : {retData.wins}/{retData.losses}/{retData.draws}</p>
+      <pre>Record : {retData.wins}/{retData.losses}/{retData.draws}     <button onClick={()=>navigate('/updatedata',{ state:{fighterName:retData.name}})}>Click to Update Record</button>  </pre>
       <p>Height(cms): {retData.height_cm}cms</p>
       <p>Weight(kgs): {retData.weight_in_kg}kgs</p>
       <p>Reach(cm): {retData.reach_in_cm}cms</p>
       <p>Stance: {retData.stance}</p>
       <p>Date of Birth:{retData.date_of_birth}</p>
-
+      
       
     </div>
   );
 }
-
 export default GetData;

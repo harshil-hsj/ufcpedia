@@ -2,6 +2,7 @@
 import './AddData.css'
 import axios from 'axios';
 import React, { use, useState } from 'react'
+import GetData from './GetData';
  ///////////// import { response } from 'express';    !!!!! polyfills
 function AddData(){
 const [additionalDetails,setAdditionalDetails] = useState(false);
@@ -146,6 +147,13 @@ function addToDatabase(){
 }
 return (
  <div className='AddData'>
+    <div className='getData'>
+      <GetData/> 
+      <GetData/>
+    </div>
+      
+      <br/>
+      <br/>
       <h1>Add Data for fight</h1>
       <input onChange={(e)=>setDate(e.target.value) } type='date' placeholder='enter date'></input>
       <br/>

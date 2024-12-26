@@ -3,8 +3,11 @@ import React from "react";
 import axios from "axios";
 import {useState} from 'react';
 import ShowData from './ShowData.js';
+import AddNewDetails from "./AddNewDetails.js";
 function AddNewFighter(){
-    const [flag,setFlag] = useState(false)
+    const [flag,setFlag] = useState(false);
+    
+    const [f,setF] = useState(false);
     const [name,setName] = useState("");
     const [fighterDetails,setFighterDetails] = useState({
         name:"",
@@ -30,12 +33,20 @@ function AddNewFighter(){
         console.log("data not received",error);
     }
     }
+
     return(
        <div className="AddNewFighter">
+           <div className="checkFighter">
            <p>check if athlete already exists in the system</p>
            <input placeholder="enter athletes name" onChange={(e)=>{setName(e.target.value)}}/>
            <button onClick={handleCheck}>Check</button>
-           {flag && <ShowData fighterDetails={fighterDetails}/> }
+           {flag && <ShowData fighterDetails={fighterDetails}/>}
+           </div>
+           <br/>
+           <div className="addFighter"> 
+                <button onClick={()=>{setF(!f)}} >Add Data</button>
+                { f && <AddNewDetails/>}
+           </div>
        </div>
     )
 };

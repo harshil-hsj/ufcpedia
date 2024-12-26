@@ -30,7 +30,8 @@ function GetData() {
         setRetData(response.data);
       })
       .catch(function(error) {
-        setRetData({name:"",
+        setRetData({
+          name:"",
           nickname:"",
           wins:0,
           losses:0,

@@ -10,6 +10,8 @@ app.use(cors());
 app.use(express.json());
 const filePathFights = './ufc-master.csv'
 const filePathFighter= './ufc-fighters-statistics.csv'
+
+///// Get fighters info
 app.get('/getFighterInfo',(req,res)=>{
    console.log("getting data");
    console.log(typeof(req));
@@ -57,6 +59,8 @@ app.get('/getFighterInfo',(req,res)=>{
    });
 });
 
+
+///// Add fights info
 app.post('/addFightInfo', (req, res) => {
   const newRow = [
     ...Object.values(req.body)  // This will take all the values from req.body and add them to the array
@@ -101,8 +105,6 @@ app.post('/addFightInfo', (req, res) => {
 
 
 /// Update record of fighter
-
-
 app.post('/updateRecord', (req, res) => {
   const { name, wins, losses, draws } = req.body;
 
@@ -154,8 +156,9 @@ app.post('/updateRecord', (req, res) => {
       });
 });
 
+
 ////   Add New Fighter to the Dataset ()
-/// const filePathFighter= './ufc-fighters-statistics.csv'
+///    const filePathFighter= './ufc-fighters-statistics.csv'
 app.post('/addNewFighter',(req,res)=>{
   console.log(req.body);
   console.log("about to add data");
@@ -164,43 +167,55 @@ app.post('/addNewFighter',(req,res)=>{
   ]
   console.log(newFighter[0] +" "+newFighter[4]);
   const oldData= [];
-  let lastName = "a";
-  const name = typeof newFighter[0] === 'string' ? newFighter[0].toLowerCase() : '';
+  let lastName = "";
+  const name = typeof newFighter[0] === 'string' ? newFighter[0].toLowerCase().trim() : '';
+  console.log("the string is name = ",{name});
   fs.createReadStream(filePathFighter)
-  .pipe(fastcsv.parse())
+  .pipe(fastcsv.parse({headers:true}))
   .on('data',(row)=>{
-    const newName = row.name && typeof row.name === 'string' ? row.name.toLowerCase() : "";
-     if( name > lastName.toLowerCase() && name < newName){
-      oldData.push(newFighter); // new Data added to system.
+    
+    const newName = row && row.name && typeof row.name === 'string' ? row.name.toLowerCase().trim() : '';
+  
+     if( name > lastName && name < newName){
+      oldData.push(newFighter); // new fighter added to system.
+      console.log("found the place");
       oldData.push(row);
       lastName = newName;
      }
      else{
+      
       oldData.push(row);
       lastName = newName;
      }
   })
   .on('end',()=>{
+     console.log("got to the end");
+
      const writeStream = fs.createWriteStream(filePathFighter);
-     const csvStream = fastcsv.format({headers:false});
+     const csvStream = fastcsv.format({headers:true});
+
      csvStream.pipe(writeStream)
-     .on('finish',()=>{
+       .on('finish',()=>{
         console.log("data added succesfully ");
         res.status(200).json({message:"data added "});
-     })
-     .on('error',(error)=>{
-      console.log("error writing to csv",error);
-      res.status(500).json({error:"error adding data "});
-     })
+       })
+       .on('error',(error)=>{
+        console.log("error writing to csv",error);
+        res.status(500).json({error:"error adding data "});
+        });
      oldData.forEach((row)=>{
       csvStream.write(row);
-     })
+     });
+     csvStream.end();
   })
   .on('error',(error)=>{
     console.log("error adding data",error);
     res.status(500).json({error:"error"});
   })
 })
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);

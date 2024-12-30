@@ -19,7 +19,8 @@ function AddNewFighter(){
         weight_in_kg:0,
         reach_in_cm:0,
         stance:"",
-        date_of_birth:""
+        date_of_birth:"",
+        UFC :""
     })
     const handleCheck= async function() {
         setFlag(!flag);

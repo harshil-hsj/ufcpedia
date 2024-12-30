@@ -16,7 +16,7 @@ app.get('/getFighterInfo',(req,res)=>{
    console.log("getting data");
    console.log(typeof(req));
    console.log(req.query);
-   const name = req.query.fighter.toLowerCase();
+   const name = req.query.fighter.toLowerCase();                           ///// '/getFighterInfo'
    let found = false;
    result =[]
    let maxClose = 1;
@@ -60,10 +60,11 @@ app.get('/getFighterInfo',(req,res)=>{
 });
 
 
+
 ///// Add fights info
 app.post('/addFightInfo', (req, res) => {
   const newRow = [
-    ...Object.values(req.body)  // This will take all the values from req.body and add them to the array
+    ...Object.values(req.body)           //This will take all the values from req.body and add them to the array
   ];
 
   const rows = [];
@@ -89,7 +90,6 @@ app.post('/addFightInfo', (req, res) => {
           console.error("Error writing to CSV:", error);
           res.status(500).json({ error: "Error writing to CSV file" });
         });
-
       // Write all the rows (with the new row at the second position)
       rows.forEach((row) => {
         csvStream.write(row);
@@ -106,24 +106,27 @@ app.post('/addFightInfo', (req, res) => {
 
 /// Update record of fighter
 app.post('/updateRecord', (req, res) => {
-  const { name, wins, losses, draws } = req.body;
-
+  console.log(req.body);
+  const { name, wins, losses, draws,UFC} = req.body;
+  console.log(UFC);
   const rows = [];
   let updated = false;
   let header = '';  // Variable to store the header row
 
   fs.createReadStream(filePathFighter)
-      .pipe(csv())
+      .pipe(fastcsv.parse({headers:true}))
       .on('data', (row) => {
-          if (!header) {
-              // storing the header
-              header = Object.keys(row).join(','); // Saves the header column names
-          }
+          // if (!header) {
+          //     // storing the header
+          //     header = Object.keys(row).join(','); // Saves the header column names
+          // }
           // If the row's name matches, update the record
           if (row.name === name) {
-              if (wins != 0) row.wins = wins;
-              if (losses != 0) row.losses = losses;
-              if (draws != 0) row.draws = draws;
+              console.log("here ")
+              if (wins !== 0) row.wins = wins;
+              if (losses !== 0) row.losses = losses;
+              if (draws !== 0) row.draws = draws;
+              if(UFC !=='')row.UFC = UFC;
               updated = true;
           }
           rows.push(row);
@@ -132,24 +135,22 @@ app.post('/updateRecord', (req, res) => {
           if (!updated) {
               return res.status(404).send({ error: 'Fighter not found' });
           }
+          const writeStream = fs.createWriteStream(filePathFighter);
+          const csvStream = fastcsv.format({headers:true});
 
-          // Update CSV data: Create updated rows (skipping the header row for row mapping)
-          const updatedData = rows.map((row) => {
-              return `${row.name},${row.nickname},${row.wins},${row.losses},${row.draws},${row.height_cm},${row.weight_in_kg},${row.reach_in_cm},${row.stance},${row.date_of_birth}`;
-          }).join('\n');
-
-          // Write the header row back along with the updated rows
-          const finalData = `${header}\n${updatedData}`;
-
-          // Overwrite the CSV file with the header and updated data
-          fs.writeFile(filePathFighter, finalData, (err) => {
-              if (err) {
-                  console.log(err);
-                  return res.status(500).send({ error: 'Error writing to CSV file' });
-              }
-              // Successfully updated
-              res.status(200).send('Record updated successfully');
+           csvStream.pipe(writeStream)
+            .on('finish',()=>{
+              console.log("data updated succesfully");
+              res.status(200).json({message:"data added"});
+            })
+            .on('error',(error)=>{
+              console.log("error writing to csv",error);
+              res.status(500).json({error:"error adding data"});
+            });
+          rows.forEach((row)=>{
+            csvStream.write(row);
           });
+          csvStream.end();
       })
       .on('error', (err) => {
           res.status(500).send({ error: 'Error reading CSV file' });

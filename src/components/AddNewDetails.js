@@ -12,7 +12,10 @@ function AddNewDetails(){
         weight_in_kg:0,
         reach_in_cm:0,
         stance:"",
-        date_of_birth:""
+        date_of_birth:"",
+        UFC:""
+        
+
    })
    const handleSubmit = async function(){
      try{
@@ -31,7 +34,7 @@ function AddNewDetails(){
 //         reach_in_cm:0,
 //         stance:"",
 //         date_of_birth:""
-//    })
+//   })
      }
      catch(error){
        console.log(error);
@@ -45,7 +48,8 @@ function AddNewDetails(){
         weight_in_kg:0,
         reach_in_cm:0,
         stance:"",
-        date_of_birth:""
+        date_of_birth:"",
+        UFC:""
    })
      }
    }
@@ -61,9 +65,9 @@ function AddNewDetails(){
            <input onChange={(e)=>fighterDetails.reach_in_cm = e.target.value} required  placeholder="Enter Reach in cms..."/><br/>
            <input onChange={(e)=>fighterDetails.stance = e.target.value}  required placeholder="Enter Stance..."/><br/>
            <input onChange={(e)=>fighterDetails.date_of_birth = e.target.value}  required placeholder="Enter D.O.B (dd-mm-yyyy)..."/><br/>
+           <input onChange={(e)=>fighterDetails.UFC = e.target.value}  required placeholder="Currently in the UFC?"/><br/>
            <button onClick={handleSubmit}>Add Details</button>
      </div>
-
    )
 }
 export default AddNewDetails;

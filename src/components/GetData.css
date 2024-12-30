@@ -1,0 +1,27 @@
+.GetData{
+  width: 100%;
+}
+input{
+  margin-top: 3%;
+  margin-left: 10%;
+  width: 25%;
+}
+.search{
+  width:10% ;
+  margin-left: 1%;
+}
+
+.GetData .show{
+ height: fit-content;
+
+ margin-left: 5%;
+ width: 100%;
+}
+.GetData .show .ShowData{
+    width: 60%;
+}
+.updateRecord{
+    margin-left: 10%;
+    width: 50%;
+    margin-bottom: 1%;
+}

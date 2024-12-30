@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import UpdateData from './UpdateData.js'
+import Image from './Image.js'
 import ShowData from './ShowData.js';
+import './GetData.css';
 function GetData() {
   const navigate = useNavigate();
   const [retData, setRetData] = useState({
@@ -48,11 +50,11 @@ function GetData() {
         console.log(error);
       });
   }
-
   return (
     <div className='GetData'>
+      
       <input type='text' onChange={(e)=>{setFighterName(e.target.value)}} placeholder='type fighters name'/>
-      <button onClick={handleData}>Get Data</button>
+      <button className = 'search' onClick={handleData}>Get Data</button>
       
       {/* <h2 >Name : {retData.name}</h2>
       <h3> {retData.nickname}</h3>
@@ -62,8 +64,11 @@ function GetData() {
       <p>Reach(cm): {retData.reach_in_cm}cms</p>
       <p>Stance: {retData.stance}</p>
       <p>Date of Birth:{retData.date_of_birth}</p> */}
+      <div className = 'show'>
       <ShowData fighterDetails = {retData}/>
-      { flag && <button  onClick={()=>navigate('/updatedata',{state:{fighterName:retData.name}})}  >Update Athletes Data</button>}
+      <Image name = {retData.name}/>
+      { flag && <button  className='updateRecord' onClick={()=>navigate('/updatedata',{state:{fighterName:retData.name}})}  >Update Athletes Data</button>}
+      </div>
     </div>
   );
 }

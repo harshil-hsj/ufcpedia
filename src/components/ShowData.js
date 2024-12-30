@@ -1,5 +1,5 @@
 import React from "react";
-
+import './ShowData.css';
 function ShowData(fighterDetails){
     console.log(fighterDetails);
     fighterDetails = fighterDetails.fighterDetails;
@@ -8,7 +8,7 @@ function ShowData(fighterDetails){
             <p> Closest Match for athlete</p>
             <h2 >Name : {fighterDetails.name}</h2>
       <h3> {fighterDetails.nickname}</h3>
-      <pre>Record : {fighterDetails.wins}/{fighterDetails.losses}/{fighterDetails.draws}</pre>
+      <p>Record : {fighterDetails.wins}/{fighterDetails.losses}/{fighterDetails.draws}</p>
       <p>Height(cms): {fighterDetails.height_cm}cms</p>
       <p>Weight(kgs): {fighterDetails.weight_in_kg}kgs</p>
       <p>Reach(cm): {fighterDetails.reach_in_cm}cms</p>

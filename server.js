@@ -10,6 +10,21 @@ app.use(cors());
 app.use(express.json());
 const filePathFights = './ufc-master.csv'
 const filePathFighter= './ufc-fighters-statistics.csv'
+const imageLink = './link.json'
+//// Get link from json
+
+app.get('/getLink',(req,res)=>{
+   const name = req.query.name;
+   if( imageLink.hasOwnProperty(name)){
+      res.json(imageLink[name]);
+   }
+   else{
+      console.log("error ");
+      res.status(404).json({message:"no data found"});
+   }
+})
+
+
 
 ///// Get fighters info
 app.get('/getFighterInfo',(req,res)=>{

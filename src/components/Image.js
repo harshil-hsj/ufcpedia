@@ -1,26 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function Image(name){
+function Image({name}){
  const [link,setLink] = useState("");
- const handleName = async function(){
+ useEffect(()=>{
+ const handleName = async ()=>{
     try{
       const res = await axios.get('http://localhost:5000/getLink',
-        {params:name}
+        {params:{name},}
       );
-      console.log("received res",res);
+      
+      console.log("zero");
+      setLink(res.data.link);
+      console.log("received res",res.data);
     }
     catch(error){
       console.log("error ",error);
     }
- }
- handleName();
+ };
+ if(name){
+  handleName();
+ }},[name]);
+
  return(
     <div className="Image">
+      { link && 
         <img
         src={link}
-        alt="Fighter Name"
+        alt="Fighter Name" 
       />
+      }
     </div>
  )
 }

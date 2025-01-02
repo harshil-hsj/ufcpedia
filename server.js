@@ -3,6 +3,7 @@ const cors = require('cors');
 const fs = require('fs');
 const app = express();
 const Fuse = require('fuse.js');
+const path = require('path');
 const fastcsv = require('fast-csv');
 const PORT = 5000;
 const csv = require('csv-parser');
@@ -10,13 +11,14 @@ app.use(cors());
 app.use(express.json());
 const filePathFights = './ufc-master.csv'
 const filePathFighter= './ufc-fighters-statistics.csv'
-const imageLink = './link.json'
+const imageLink = require('./link.json');
 //// Get link from json
 
 app.get('/getLink',(req,res)=>{
    const name = req.query.name;
+   console.log(name);
    if( imageLink.hasOwnProperty(name)){
-      res.json(imageLink[name]);
+      res.json({link:imageLink[name]});
    }
    else{
       console.log("error ");

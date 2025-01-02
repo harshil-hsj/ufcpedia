@@ -56,19 +56,13 @@ function GetData() {
       <input type='text' onChange={(e)=>{setFighterName(e.target.value)}} placeholder='type fighters name'/>
       <button className = 'search' onClick={handleData}>Get Data</button>
       
-      {/* <h2 >Name : {retData.name}</h2>
-      <h3> {retData.nickname}</h3>
-      <pre>Record : {retData.wins}/{retData.losses}/{retData.draws}     <button onClick={()=>navigate('/updatedata',{ state:{fighterName:retData.name}})}>Click to Update Record</button>  </pre>
-      <p>Height(cms): {retData.height_cm}cms</p>
-      <p>Weight(kgs): {retData.weight_in_kg}kgs</p>
-      <p>Reach(cm): {retData.reach_in_cm}cms</p>
-      <p>Stance: {retData.stance}</p>
-      <p>Date of Birth:{retData.date_of_birth}</p> */}
+   
       <div className = 'show'>
-      <ShowData fighterDetails = {retData}/>
-      <Image name = {retData.name}/>
-      { flag && <button  className='updateRecord' onClick={()=>navigate('/updatedata',{state:{fighterName:retData.name}})}  >Update Athletes Data</button>}
+      {retData.name !== "" && <>  <ShowData fighterDetails = {retData}/> <Image name = {retData.name}/>  </> }
+      
+      
       </div>
+      { flag && <button  className='updateRecord' onClick={()=>navigate('/updatedata',{state:{fighterName:retData.name}})}  >Update Athletes Data</button>}
     </div>
   );
 }

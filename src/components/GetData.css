@@ -10,10 +10,12 @@ input{
   width:10% ;
   margin-left: 1%;
 }
-
+.GetData .show .Image{
+  width: 50px;
+}
 .GetData .show{
  height: fit-content;
-
+ display: flex;
  margin-left: 5%;
  width: 100%;
 }

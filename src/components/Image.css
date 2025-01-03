@@ -1,8 +1,10 @@
 .Image{
-    width: 50%;
-    height: 50%;
+  
 }
 img{
-    width: 20%;
-    height: 20%;
+    width: 408px;
+    height: 408px;
+    margin:4px;
+    margin-bottom: 1px;
+    outline: 2px solid silver;
 }

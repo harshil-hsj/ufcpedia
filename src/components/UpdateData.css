@@ -1,0 +1,19 @@
+.UpdateData{
+    width: 100%;
+    
+    display:flexbox;
+    justify-content: center;
+}
+h1{
+    justify-self: center;
+}
+input{
+   
+    width: 15%;
+ }
+button{
+    margin-left: 40%;
+    width: 20%;
+    justify-self: center;
+    align-self: center;
+}

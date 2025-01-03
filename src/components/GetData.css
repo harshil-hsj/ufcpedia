@@ -1,4 +1,5 @@
 .GetData{
+  height: 100%;
   width: 100%;
 }
 input{
@@ -10,20 +11,22 @@ input{
   width:10% ;
   margin-left: 1%;
 }
-.GetData .show .Image{
-  width: 50px;
-}
 .GetData .show{
- height: fit-content;
- display: flex;
- margin-left: 5%;
- width: 100%;
-}
+  height: fit-content;
+
+  display: flex;
+  margin-left: 5%;
+  width: 100%;
+ }
+
+
 .GetData .show .ShowData{
-    width: 60%;
+  margin-top:5px;
+  outline: 1px  solid black;
+    width: 30%;
 }
 .updateRecord{
-    margin-left: 10%;
-    width: 50%;
-    margin-bottom: 1%;
+    margin-left: 20%;
+    width: 30%;
+    margin-top: 2px;
 }

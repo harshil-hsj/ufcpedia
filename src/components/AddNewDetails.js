@@ -23,18 +23,7 @@ function AddNewDetails(){
        const response = await axios.post('http://localhost:5000/addNewFighter',fighterDetails);
        console.log("second");
        console.log(response);
-//        setFighterDetails({
-//         name:"",
-//         nickname:"",
-//         wins:0,
-//         losses:0,
-//         draws:0,
-//         height_cm:0,
-//         weight_in_kg:0,
-//         reach_in_cm:0,
-//         stance:"",
-//         date_of_birth:""
-//   })
+
      }
      catch(error){
        console.log(error);

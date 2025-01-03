@@ -4,6 +4,10 @@
 .getData{
     display: flex;
 }
-.GetData{
+.getData .GetData{
     width: 50%;
+}
+.getData .GetData .search{
+    
+   color: black;
 }

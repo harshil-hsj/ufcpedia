@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import './Image.css';
 function Image({name}){
  const [link,setLink] = useState("");
  useEffect(()=>{

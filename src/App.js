@@ -26,7 +26,7 @@ function Home() {
       <button onClick={goToAddData}>Add Data</button>
       <br/><br/>
       <button onClick={goToGetData}>Get Data</button>
-      <br/><br/>
+      <br/><br/>      
       <button onClick={goToAddNewFighter}>Add New Fighter</button>
       </div>
     </div>

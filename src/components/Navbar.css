@@ -1,9 +1,15 @@
 .Navbar{
+    z-index: 1000;
+    height: 60px;
     position:fixed;
     background-color: black;
     top: 0px;
     width: 100%;
+    justify-items: center;
+    align-items: center;
 }
 h1{
+    justify-self: center;
+    align-self: center;
     color:white;
 }

@@ -15,7 +15,8 @@ const imageLink = require('./link.json');
 //// Get link from json
 
 app.get('/getLink',(req,res)=>{
-   const name = req.query.name;
+   const name = req.query.name?req.query.name:req.query.fighter;
+   console.log(req.query);
    console.log(name);
    if( imageLink.hasOwnProperty(name)){
       res.json({link:imageLink[name]});
@@ -33,7 +34,7 @@ app.get('/getFighterInfo',(req,res)=>{
    console.log("getting data");
    console.log(typeof(req));
    console.log(req.query);
-   const name = req.query.fighter.toLowerCase();                           ///// '/getFighterInfo'
+   const name = req.query.fighter.toLowerCase();      // resolve this asap                     ///// '/getFighterInfo'
    let found = false;
    result =[]
    let maxClose = 1;

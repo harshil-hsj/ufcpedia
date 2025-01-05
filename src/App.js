@@ -26,14 +26,15 @@ function Home() {
     
     <div className="App">
       
+      
       <div className="buttons">
-      <FightersPage/>
       <button onClick={goToAddData}>Add Data</button>
       <br/><br/>
       <button onClick={goToGetData}>Get Data</button>
       <br/><br/>      
       <button onClick={goToAddNewFighter}>Add New Fighter</button>
       </div>
+      <FightersPage fighter="Khamzat Chimaev"/>
     </div>
   );
 }

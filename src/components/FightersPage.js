@@ -50,7 +50,6 @@ const FightersPage = ({fighter}) => {
       }, [fighter]);
   return (
     <div className='Page' style={{ backgroundImage: `url(${link})` }}>
-      
       <div className='Info'>
       <h2 >{retData.name}</h2>
       <h3> {retData.nickname}</h3>

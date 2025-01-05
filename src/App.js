@@ -25,17 +25,29 @@ function Home() {
   return (
     
     <div className="App">
+    <div className="fighters-container">
+      <FightersPage fighter="Khamzat Chimaev"/>
+      <FightersPage fighter="Ilia Topuria"/>
       
-      
-      <div className="buttons">
-      <button onClick={goToAddData}>Add Data</button>
-      <br/><br/>
-      <button onClick={goToGetData}>Get Data</button>
-      <br/><br/>      
-      <button onClick={goToAddNewFighter}>Add New Fighter</button>
-      </div>
+      <FightersPage fighter="Conor McGregor"/>
+      <FightersPage fighter="Khabib Nurmagomedov"/>
+      <FightersPage fighter="Charles Olvera"/>
+      <FightersPage fighter="Khamzat Chimaev"/>
+      <FightersPage fighter="Khamzat Chimaev"/>
+      <FightersPage fighter="Khamzat Chimaev"/>
+      <FightersPage fighter="Khamzat Chimaev"/>
+      <FightersPage fighter="Khamzat Chimaev"/>
       <FightersPage fighter="Khamzat Chimaev"/>
     </div>
+  
+    <div className="buttons">
+      <button onClick={goToAddData}>Add Data</button>
+      <br /><br />
+      <button onClick={goToGetData}>Get Data</button>
+      <br /><br />
+      <button onClick={goToAddNewFighter}>Add New Fighter</button>
+    </div>
+  </div>
   );
 }
 function MainApp() {

@@ -5,6 +5,8 @@ import GetData from './components/GetData';
 import AddNewFighter from './components/AddNewFighter';
 import UpdateData from './components/UpdateData';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import FightersPage from './components/FightersPage';
 
 
 function Home() {
@@ -21,8 +23,11 @@ function Home() {
     navigate('/addnewfighter');
   }
   return (
+    
     <div className="App">
+      
       <div className="buttons">
+      <FightersPage/>
       <button onClick={goToAddData}>Add Data</button>
       <br/><br/>
       <button onClick={goToGetData}>Get Data</button>
@@ -32,10 +37,10 @@ function Home() {
     </div>
   );
 }
-
 function MainApp() {
   return (
     <Router>
+      <Navbar/>
       <Routes>
         {/* Home route renders the Home component */}
         <Route path="/" element={<Home />} />

@@ -26,18 +26,19 @@ function Home() {
     
     <div className="App">
     <div className="fighters-container">
-      <FightersPage fighter="Khamzat Chimaev"/>
+      <FightersPage fighter="Dustin Poirier"/>
       <FightersPage fighter="Ilia Topuria"/>
       
       <FightersPage fighter="Conor McGregor"/>
-      <FightersPage fighter="Khabib Nurmagomedov"/>
-      <FightersPage fighter="Charles Olvera"/>
-      <FightersPage fighter="Khamzat Chimaev"/>
-      <FightersPage fighter="Khamzat Chimaev"/>
-      <FightersPage fighter="Khamzat Chimaev"/>
-      <FightersPage fighter="Khamzat Chimaev"/>
-      <FightersPage fighter="Khamzat Chimaev"/>
-      <FightersPage fighter="Khamzat Chimaev"/>
+      <FightersPage fighter="Jon Jones"/>
+      <FightersPage fighter="Charles Oliveira"/>
+      <FightersPage fighter="Tony Ferguson"/>
+      <FightersPage fighter="Dan Hooker"/>
+      <FightersPage fighter="Max Holloway"/>
+      <FightersPage fighter="Donald Cerrone"/>
+      <FightersPage fighter="Robert Whittaker"/>
+      <FightersPage fighter="Israel Adesanya"/>
+      <FightersPage fighter="Alex Pereira"/>
     </div>
   
     <div className="buttons">

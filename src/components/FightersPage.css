@@ -17,9 +17,14 @@
     border-radius: 8px; /* Optional, rounded corners */
     text-align: center;
     margin-bottom: 2px;
-
+    opacity: 0; /* Initially hide the Info */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
     max-width: 90%; /* Limit the width of the content */
     max-height: 50%; /* Limit the height of the content */
+  }
+  .Page:hover .Info{
+     opacity: 1;
+     cursor: pointer;
   }
   
   h2 {

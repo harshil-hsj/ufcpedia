@@ -16,7 +16,7 @@ const imageLink = require('./link.json');
 
 app.get('/getLink',(req,res)=>{
    const name = req.query.name?req.query.name:req.query.fighter;
-   console.log(req.query);
+   console.log("link"+req.query.name);
    console.log(name);
    if( imageLink.hasOwnProperty(name)){
       res.json({link:imageLink[name]});

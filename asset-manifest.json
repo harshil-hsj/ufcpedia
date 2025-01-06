@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ufcpedia/static/css/main.fec700df.css",
+    "main.js": "/ufcpedia/static/js/main.52c91f7d.js",
+    "static/js/488.6cf39791.chunk.js": "/ufcpedia/static/js/488.6cf39791.chunk.js",
+    "index.html": "/ufcpedia/index.html",
+    "main.fec700df.css.map": "/ufcpedia/static/css/main.fec700df.css.map",
+    "main.52c91f7d.js.map": "/ufcpedia/static/js/main.52c91f7d.js.map",
+    "488.6cf39791.chunk.js.map": "/ufcpedia/static/js/488.6cf39791.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fec700df.css",
+    "static/js/main.52c91f7d.js"
+  ]
+}

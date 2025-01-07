@@ -4,6 +4,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import UpdateData from './UpdateData.js'
 import Image from './Image.js'
+import {baseUrl}  from '../Url.js';
 import ShowData from './ShowData.js';
 import './GetData.css';
 function GetData() {
@@ -25,7 +26,7 @@ function GetData() {
   const [flag,setFlag] = useState(false);
   const handleData = function() {
     // Using .then() and .catch() instead of async/await
-    axios.get('http://localhost:5000/getFighterInfo',{
+    axios.get(`${ baseUrl }/getFighterInfo`,{
       params:{fighter:fighter}
     })
       .then(function(response) {

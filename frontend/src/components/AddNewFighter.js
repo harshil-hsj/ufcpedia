@@ -3,6 +3,7 @@ import React from "react";
 import axios from "axios";
 import {useState} from 'react';
 import ShowData from './ShowData.js';
+import { baseUrl } from "../Url.js";
 import AddNewDetails from "./AddNewDetails.js";
 function AddNewFighter(){
     const [flag,setFlag] = useState(false);
@@ -24,7 +25,7 @@ function AddNewFighter(){
     })
     const handleCheck= async function() {
         setFlag(!flag);
-     try{   const response = await axios.get('http://localhost:5000/getFighterInfo',{
+     try{   const response = await axios.get(`${baseUrl}/getFighterInfo`,{
       params:{fighter:name}
     })
     console.log("data received (new fighter added)",response.data);

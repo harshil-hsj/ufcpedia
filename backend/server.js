@@ -6,7 +6,7 @@ require('dotenv').config();
 const Fuse = require('fuse.js');
 const path = require('path');
 const fastcsv = require('fast-csv');
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT ;
 const csv = require('csv-parser');
 app.use(cors());
 app.use(express.json());

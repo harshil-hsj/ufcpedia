@@ -1,6 +1,7 @@
 import React from "react";
 import {useState} from 'react';
 import axios from "axios";
+import { baseUrl } from "../Url";
 function AddNewDetails(){
    const [fighterDetails,setFighterDetails] = useState({
         name:"",
@@ -20,7 +21,7 @@ function AddNewDetails(){
    const handleSubmit = async function(){
      try{
         console.log("first");
-       const response = await axios.post('http://localhost:5000/addNewFighter',fighterDetails);
+       const response = await axios.post(`{baseUrl}/addNewFighter`,fighterDetails);
        console.log("second");
        console.log(response);
 

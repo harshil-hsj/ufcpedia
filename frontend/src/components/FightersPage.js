@@ -2,12 +2,13 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import './FightersPage.css'
 import axios from 'axios';
+import { baseUrl } from '../Url';
 const FightersPage = ({fighter}) => {
     const [link,setLink]=useState("");
     useEffect(()=>{
       const handleName = async ()=>{
          try{
-           const res = await axios.get('http://localhost:5000/getLink',
+           const res = await axios.get(`${baseUrl}/getLink`,
              {params:{fighter},}
            );
            
@@ -38,7 +39,7 @@ const FightersPage = ({fighter}) => {
     useEffect(() => {
         const fetchFighterData = async () => {
           try {
-            const response = await axios.get('http://localhost:5000/getFighterInfo', {
+            const response = await axios.get(`${baseUrl}/getFighterInfo`, {
               params: { fighter }
             });
             setRetData(response.data);

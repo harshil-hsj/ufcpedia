@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { baseUrl } from "../Url";
 import './UpdateData.css';
 function UpdateData(){
 const [wins,setWins] = useState(0);
@@ -11,7 +12,7 @@ const [ufc,setUfc] = useState("");
 const location = useLocation();
 const fighterName = location.state.fighterName;
 function updateRecord(){
-    axios.post('http://localhost:5000/updateRecord',{ name:fighterName,wins:wins,losses:losses,draws:draws,UFC:ufc})
+    axios.post(`${baseUrl}/updateRecord`,{ name:fighterName,wins:wins,losses:losses,draws:draws,UFC:ufc})
     .then(response=>{
         alert("data updated succesfully");
         console.log(response.data);

@@ -3,6 +3,7 @@ import './AddData.css'
 import axios from 'axios';
 import React, { use, useState } from 'react'
 import GetData from './GetData';
+import { baseUrl } from '../Url';
  ///////////// import { response } from 'express';    !!!!! polyfills
 function AddData(){
 const [additionalDetails,setAdditionalDetails] = useState(false);
@@ -87,10 +88,10 @@ const handleAdditional = async function () {
  
          // Fetch both fighters concurrently
          const [redResponse, blueResponse] = await Promise.all([
-             axios.get('http://localhost:5000/getFighterInfo', {
+             axios.get(`${baseUrl}/getFighterInfo`, {
                  params: { fighter: redFighter }
              }),
-             axios.get('http://localhost:5000/getFighterInfo', {
+             axios.get(`${baseUrl}/getFighterInfo`, {
                  params: { fighter: blueFighter }
              }),
          ]);
@@ -137,7 +138,7 @@ const handleAdditional = async function () {
  };
  
 function addToDatabase(){
-     axios.post( 'http://localhost:5000/addFightInfo',fightDetails)
+     axios.post( `${baseUrl}/addFightInfo`,fightDetails)
      .then(response =>{
       console.log("data added succesfully",response.data);
      })
@@ -201,11 +202,6 @@ return (
                )}
           </div>
       )}
-      
-      
-      
-
-
  </div>
 )
 }

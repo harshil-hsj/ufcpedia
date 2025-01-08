@@ -141,6 +141,32 @@ function addToDatabase(){
      axios.post( `${baseUrl}/addFightInfo`,fightDetails)
      .then(response =>{
       console.log("data added succesfully",response.data);
+      setFightDetails({
+        RedFighter:"",
+        BlueFighter:"",
+        RedOdds:0,
+        BlueOdds:0,
+        Date:date,
+        Location:location,
+        Country:country,
+        Winner:'',
+        TitleBout:'',
+        WeightClass:'',
+        Gender:'',
+        BlueStance:'',
+        BlueHeightCms:0,
+        BlueReachCms:0,
+        RedStance:'',
+        RedHeightCms:0,
+        RedReachCms:0,
+        RedAge:0,
+        BlueAge:0,
+        Finish:'',
+        FinishDetails:'',
+        FinishRound:0,
+        FinishRoundTime:'',
+        UfcEvent:event
+    })
      })
      .catch(error =>{
       console.log("unable to update database",error);
@@ -181,11 +207,11 @@ return (
                          <br/>
                          <input onChange={(e)=>{fightDetails.Winner = e.target.value}} type='text' placeholder='Who won(Red/Blue)' required/>
                          <br/>
-                         <input onChange={(e)=>{fightDetails.TitleBout = e.target.value}} type='text' placeholder='TitleBout(Yes/No)' required/>
+                         <input onChange={(e)=>{fightDetails.TitleBout = e.target.value}} type='text' placeholder='TitleBout(true/false)' required/>
                          <br/>
                          <input onChange={(e)=>{fightDetails.WeightClass = e.target.value}} type='text' placeholder="WeightClass(Ex.Bantamweight or Women's Strawweight" required/>
                          <br/>
-                         <input onChange={(e)=>{fightDetails.Gender = e.target.value}} type='text' placeholder='Gender(MALE/FEMALE)' required/>
+                         <input onChange={(e)=>{fightDetails.Gender = e.target.value}} type='text' placeholder='Gender(MALE/FEMALE) caps' required/>
                          <br/>
                          <input onChange={(e)=>{fightDetails.Finish = e.target.value}} type='text' placeholder='Finish(U-DEC/SUB/(KO/TKO))' required/>
                          <br/>

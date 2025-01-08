@@ -1,17 +1,67 @@
-{ "Islam Makhachev":"https://media.gettyimages.com/id/1737960525/photo/russias-islam-makhachev-reacts-after-his-lightweight-bout-against-australias-alexander.jpg?s=612x612&w=gi&k=20&c=h4uJ1DHrgbP8_I5tdiev4LRC1yo1oECIVrnkArTmT-w=",
-  "Khamzat Chimaev": "https://media.gettyimages.com/id/2181229128/photo/abu-dhabi-united-arab-emirates-khamzat-chimaev-of-russia-reacts-after-a-submission-victory.jpg?s=612x612&w=gi&k=20&c=sqB84MJUNHrHh5ycO3MGvgT_yLCzyaoYIfZA-DpYCXU=",
-  "Bo Nickal":"https://media.gettyimages.com/id/2185185096/photo/new-york-new-york-bo-nickal-of-the-united-states-of-america-is-interviewed-after-his.jpg?s=612x612&w=gi&k=20&c=vj2pInb8yWKfTA1Rb9sNlz1rFpVtoA29BdtmKKrnZRo=",
-  "Ilia Topuria":"https://staticg.sportskeeda.com/editor/2025/01/e50d5-17357595374062-1920.jpg?w=640",
-  "Khabib Nurmagomedov":"https://media.gettyimages.com/id/1173099999/photo/abu-dhabi-united-arab-emirates-khabib-nurmagomedov-of-russia-lokks-on-against-dustin-poirier.jpg?s=612x612&w=gi&k=20&c=0jOVbI5HJufGdRSa9K066ViYYpdQFbP0HQ2SRUkbFsQ=",
-  "Charles Oliveira":"https://media.gettyimages.com/id/1396030323/photo/phoenix-arizona-charles-oliveira-of-brazil-prepares-to-fight-justin-gaethje-in-their-ufc.jpg?s=612x612&w=gi&k=20&c=JYS4rhlUMbVXJHbeDIwfmPI80mAZ0qTvwiZOnACdcLU=",
-  "Conor McGregor":"https://media.gettyimages.com/id/542514580/photo/12-december-2015-conor-mcgregor-ahead-of-his-featherweigh-bout-against-jose-aldo-ufc-194-jose.jpg?s=612x612&w=gi&k=20&c=sITg1peakcns3n7Y3Fwq73okkMqvXBUGzK3vb60CJT8=",
-  "Jon Jones":"https://media.gettyimages.com/id/1248061337/photo/las-vegas-nv-jon-jones-at-t-mobile-arena-for-ufc-285-jones-vs-gane-event-on-march-5-2023-in.jpg?s=612x612&w=gi&k=20&c=9-jeFVRMbiLV_MbkFl9wbOXYswx-OS8GjmEZY2jRSQ0=",
-  "Max Holloway":"https://media.gettyimages.com/id/2148563796/photo/las-vegas-nevada-max-holloway-reacts-to-the-knockout-of-justin-gaethje-in-the-bmf.jpg?s=612x612&w=gi&k=20&c=yW6Gl2QeEEswrPrjmsxpX41PJlWswH85b3FMkglOzoY=",
-  "Dustin Poirier":"https://media.gettyimages.com/id/1358894315/photo/las-vegas-nevada-dustin-poirier-prepares-for-his-lightweight-title-fight-against-charles.jpg?s=612x612&w=gi&k=20&c=-FciXMcevJh-NR4YdgSSLkcbjDk03tzIgWZO7R9Fhfw=",
-  "Tony Ferguson":"https://media.gettyimages.com/id/1224290846/photo/jacksonville-fl-tony-ferguson-of-the-united-states-reacts-in-the-interim-lightweight-title.jpg?s=612x612&w=gi&k=20&c=YcaJeJICBWC0XbdUj4LY39Q0-LmicAOUnwOhegRDACY=",
-  "Donald Cerrone":"https://media.gettyimages.com/id/1406442255/photo/las-vegas-nevada-donald-cerrone-takes-off-his-gloves-as-he-announces-his-retirement-after-his.jpg?s=612x612&w=gi&k=20&c=aHzkMEtBu-qFX8XmuyEXJzFYZrlojEGf3CzyGcU8Yj8=",
-  "Robert Whittaker":"https://media.gettyimages.com/id/1370249475/photo/houston-texas-robert-whittaker-of-australia-looks-on-before-his-middleweight-championship.jpg?s=612x612&w=gi&k=20&c=-MJLzwURWrAPf7wJDTF1oCdbFQ1Y2x1N8B7sEh4oBbo=",
-  "Israel Adesanya":"https://media.gettyimages.com/id/1480921974/photo/miami-florida-israel-adesanya-of-nigeria-celebrates-after-knocking-uot-alex-pereira-of-brazil.jpg?s=612x612&w=gi&k=20&c=-x1Aaxe7HN27EW949DL_3OVY5LPwAj27K69IQpNO_wo=",
-  "Alex Pereira":"https://media.gettyimages.com/id/2148568853/photo/las-vegas-nevada-alex-pereira-of-brazil-reacts-to-defeating-jamahal-hill-in-their-light.jpg?s=612x612&w=gi&k=20&c=VTYV-qHotgNwz1xeTQ2O7wSUO3YoWVGfLx6s1G1URqM=",
-  "Dan Hooker":"https://media.gettyimages.com/id/1526901769/photo/las-vegas-nevada-dan-hooker-of-new-zealand-reacts-to-the-start-of-the-round-during-the-ufc.jpg?s=612x612&w=gi&k=20&c=ZycyYq1VvNSEIRdCJcQDw7yJo72lMmEvmGPLf7XNbPs="
-}
+[
+    {
+      "name": "Islam Makhachev",
+      "imageLink": "https://media.gettyimages.com/id/1737960525/photo/russias-islam-makhachev-reacts-after-his-lightweight-bout-against-australias-alexander.jpg?s=612x612&w=gi&k=20&c=h4uJ1DHrgbP8_I5tdiev4LRC1yo1oECIVrnkArTmT-w="
+    },
+    {
+      "name": "Khamzat Chimaev",
+      "imageLink": "https://media.gettyimages.com/id/2181229128/photo/abu-dhabi-united-arab-emirates-khamzat-chimaev-of-russia-reacts-after-a-submission-victory.jpg?s=612x612&w=gi&k=20&c=sqB84MJUNHrHh5ycO3MGvgT_yLCzyaoYIfZA-DpYCXU="
+    },
+    {
+      "name": "Bo Nickal",
+      "imageLink": "https://media.gettyimages.com/id/2185185096/photo/new-york-new-york-bo-nickal-of-the-united-states-of-america-is-interviewed-after-his.jpg?s=612x612&w=gi&k=20&c=vj2pInb8yWKfTA1Rb9sNlz1rFpVtoA29BdtmKKrnZRo="
+    },
+    {
+      "name": "Ilia Topuria",
+      "imageLink": "https://staticg.sportskeeda.com/editor/2025/01/e50d5-17357595374062-1920.jpg?w=640"
+    },
+    {
+      "name": "Khabib Nurmagomedov",
+      "imageLink": "https://media.gettyimages.com/id/1173099999/photo/abu-dhabi-united-arab-emirates-khabib-nurmagomedov-of-russia-lokks-on-against-dustin-poirier.jpg?s=612x612&w=gi&k=20&c=0jOVbI5HJufGdRSa9K066ViYYpdQFbP0HQ2SRUkbFsQ="
+    },
+    {
+      "name": "Charles Oliveira",
+      "imageLink": "https://media.gettyimages.com/id/1396030323/photo/phoenix-arizona-charles-oliveira-of-brazil-prepares-to-fight-justin-gaethje-in-their-ufc.jpg?s=612x612&w=gi&k=20&c=JYS4rhlUMbVXJHbeDIwfmPI80mAZ0qTvwiZOnACdcLU="
+    },
+    {
+      "name": "Conor McGregor",
+      "imageLink": "https://media.gettyimages.com/id/542514580/photo/12-december-2015-conor-mcgregor-ahead-of-his-featherweigh-bout-against-jose-aldo-ufc-194-jose.jpg?s=612x612&w=gi&k=20&c=sITg1peakcns3n7Y3Fwq73okkMqvXBUGzK3vb60CJT8="
+    },
+    {
+      "name": "Jon Jones",
+      "imageLink": "https://media.gettyimages.com/id/1248061337/photo/las-vegas-nv-jon-jones-at-t-mobile-arena-for-ufc-285-jones-vs-gane-event-on-march-5-2023-in.jpg?s=612x612&w=gi&k=20&c=9-jeFVRMbiLV_MbkFl9wbOXYswx-OS8GjmEZY2jRSQ0="
+    },
+    {
+      "name": "Max Holloway",
+      "imageLink": "https://media.gettyimages.com/id/2148563796/photo/las-vegas-nevada-max-holloway-reacts-to-the-knockout-of-justin-gaethje-in-the-bmf.jpg?s=612x612&w=gi&k=20&c=yW6Gl2QeEEswrPrjmsxpX41PJlWswH85b3FMkglOzoY="
+    },
+    {
+      "name": "Dustin Poirier",
+      "imageLink": "https://media.gettyimages.com/id/1358894315/photo/las-vegas-nevada-dustin-poirier-prepares-for-his-lightweight-title-fight-against-charles.jpg?s=612x612&w=gi&k=20&c=-FciXMcevJh-NR4YdgSSLkcbjDk03tzIgWZO7R9Fhfw="
+    },
+    {
+      "name": "Tony Ferguson",
+      "imageLink": "https://media.gettyimages.com/id/1224290846/photo/jacksonville-fl-tony-ferguson-of-the-united-states-reacts-in-the-interim-lightweight-title.jpg?s=612x612&w=gi&k=20&c=YcaJeJICBWC0XbdUj4LY39Q0-LmicAOUnwOhegRDACY="
+    },
+    {
+      "name": "Donald Cerrone",
+      "imageLink": "https://media.gettyimages.com/id/1406442255/photo/las-vegas-nevada-donald-cerrone-takes-off-his-gloves-as-he-announces-his-retirement-after-his.jpg?s=612x612&w=gi&k=20&c=aHzkMEtBu-qFX8XmuyEXJzFYZrlojEGf3CzyGcU8Yj8="
+    },
+    {
+      "name": "Robert Whittaker",
+      "imageLink": "https://media.gettyimages.com/id/1370249475/photo/houston-texas-robert-whittaker-of-australia-looks-on-before-his-middleweight-championship.jpg?s=612x612&w=gi&k=20&c=-MJLzwURWrAPf7wJDTF1oCdbFQ1Y2x1N8B7sEh4oBbo="
+    },
+    {
+      "name": "Israel Adesanya",
+      "imageLink": "https://media.gettyimages.com/id/1480921974/photo/miami-florida-israel-adesanya-of-nigeria-celebrates-after-knocking-uot-alex-pereira-of-brazil.jpg?s=612x612&w=gi&k=20&c=-x1Aaxe7HN27EW949DL_3OVY5LPwAj27K69IQpNO_wo="
+    },
+    {
+      "name": "Alex Pereira",
+      "imageLink": "https://media.gettyimages.com/id/2148568853/photo/las-vegas-nevada-alex-pereira-of-brazil-reacts-to-defeating-jamahal-hill-in-their-light.jpg?s=612x612&w=gi&k=20&c=VTYV-qHotgNwz1xeTQ2O7wSUO3YoWVGfLx6s1G1URqM="
+    },
+    {
+      "name": "Dan Hooker",
+      "imageLink": "https://media.gettyimages.com/id/1526901769/photo/las-vegas-nevada-dan-hooker-of-new-zealand-reacts-to-the-start-of-the-round-during-the-ufc.jpg?s=612x612&w=gi&k=20&c=ZycyYq1VvNSEIRdCJcQDw7yJo72lMmEvmGPLf7XNbPs="
+    }
+  ]
+  

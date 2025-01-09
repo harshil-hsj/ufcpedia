@@ -27,7 +27,8 @@ mongoose.connect('mongodb://localhost:27017/ufcpedia', { useNewUrlParser: true, 
     weight_in_kg:{type:Number,required:true},
     reach_in_cm:{type:Number},
     stance:{type:String},
-    date_of_birth:{type:String}
+    date_of_birth:{type:String},
+    inUFC:{type:Boolean}
     }
   ); 
   const matchSchema = new mongoose.Schema(
@@ -131,67 +132,30 @@ app.post('/addFightInfo', async (req, res) => {
 });
 
 
-
+///// add New Fighter
+app.post('/addNewFighter',async(req,res)=>{
+  console.log("new data entering");
+  try{
+    console.log("adding new fighter"+req.body);
+  const newFighter = new Fighter(req.body);
+  await newFighter.save();
+  await Fighter.find().sort({ name: 1 });
+  res.status(200).json({message:"Fighter added successfully"});
+  console.log(req.body.name+"added successfully");
+  }
+  catch(error){
+     res.status(500).json({message:"Internal Server Error"});
+     console.log(error+"Internal Server Error");
+  } 
+})
 
 
 
 // Basic route to test server
-app.get('/', (req, res) => {
-  res.send('Welcome to UFCPedia!');
-});
-app.get('/matches',async(req,res)=>{
-  try{
-    const matches = await Match.find({});
-    res.json(matches);
-  }
-  catch(error){
-    res.json("error");
-  }
-})
-app.get('/links',async(req,res)=>{
-  try{
-  const links = await Image.find({});
-  res.json(links);
-  }
-  catch(error){
-    res.json("error");
-  }
-})
-app.get('/links/:name',async(req,res)=>{
- 
-  try{
-    const name = req.params.name;
-    console.log(name);
-    const imgName = await Image.find({name});
-    res.json(imgName);
-    
-  }
-  catch(error){
-  res.json("error");
-  }
-})
-app.get('/fighters', async (req, res) => {
-    try {
-      const fighters = await Fighter.find(); // Fetches all fighters
-      res.json(fighters); // Sends the data back as a JSON response
-    } catch (error) {
-      res.status(500).json({ message: "Error fetching data", error });
-    }
-  });
-  app.get('/fighters/:name', async (req, res) => {
-    try {
-      console.log(req.params);
-      const name = req.params.name;
-      const fighter = await Fighter.findOne({name} ); // Fetch a fighter by name
-      if (fighter) {
-        res.json(fighter);
-      } else {
-        res.status(404).json({ message: 'Fighter not found' });
-      }
-    } catch (error) {
-      res.status(500).json({ message: 'Error fetching fighter', error });
-    }
-  });
+
+
+
+
 // Start the server
 app.listen(PORT, () => {
   console.log("Server is running on port 3001");

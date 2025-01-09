@@ -1,15 +1,17 @@
+require('dotenv').config(); 
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const Fuse = require('fuse.js');
 const app = express();
 app.use(cors());
 // Middleware to parse JSON bodies
 app.use(express.json());
+MONGO_CONN = process.env.MONGO_CONN;
 
 // Connect to MongoDB database
-mongoose.connect('mongodb://localhost:27017/ufcpedia', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`${MONGO_CONN}ufcpedia`, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
   })
@@ -175,12 +177,6 @@ app.post('/updateRecord',async(req,res)=>{
   }
 });
 
-
-
-
-
-
-
 // Basic route to test server
 
 
@@ -188,5 +184,5 @@ app.post('/updateRecord',async(req,res)=>{
 
 // Start the server
 app.listen(PORT, () => {
-  console.log("Server is running on port 3001");
+  console.log("Server is running on port "+PORT);
 });

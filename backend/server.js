@@ -77,8 +77,8 @@ mongoose.connect(`${MONGO_CONN}ufcpedia`, { useNewUrlParser: true, useUnifiedTop
       const img = await Image.find();
     res.json(img);
     }
-    catch(erro){
-
+    catch(error){
+     res.json(error+"not there");
     }
   })
   app.get('/getLink',async(req,res)=>{

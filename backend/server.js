@@ -149,6 +149,36 @@ app.post('/addNewFighter',async(req,res)=>{
   } 
 })
 
+////// update record
+app.post('/updateRecord',async(req,res)=>{
+  try{
+  const {name,wins,losses,draws,inUFC} = req.body;
+  const fighterToBeChanged = await Fighter.findOne({name});
+  if (wins !== undefined && wins !== 0) {
+    fighterToBeChanged.wins = wins;
+  }
+  if (losses !== undefined && losses !== 0) {
+    fighterToBeChanged.losses = losses;
+  }
+  if (draws !== undefined && draws !== 0) {
+    fighterToBeChanged.draws = draws;
+  }
+  fighterToBeChanged.inUFC = inUFC;
+  console.log(fighterToBeChanged.inUFC + " "+inUFC);
+  await fighterToBeChanged.save();
+  console.log("updated "+ name + " data");
+  res.status(200).json({message:"updated data succesfully for "+name});
+  }
+  catch(error){
+    res.status(500).json({message:"Internal Server Error"});
+    console.log("Internal Server Error");
+  }
+});
+
+
+
+
+
 
 
 // Basic route to test server

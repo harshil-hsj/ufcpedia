@@ -8,11 +8,11 @@ function UpdateData(){
 const [wins,setWins] = useState(0);
 const [draws,setDraws] = useState(0);
 const [losses,setLosses] = useState(0);
-const [ufc,setUfc] = useState("");
+const [ufc,setUfc] = useState(false);
 const location = useLocation();
 const fighterName = location.state.fighterName;
 function updateRecord(){
-    axios.post(`${baseUrl}/updateRecord`,{ name:fighterName,wins:wins,losses:losses,draws:draws,UFC:ufc})
+    axios.post(`${baseUrl}/updateRecord`,{ name:fighterName,wins:wins,losses:losses,draws:draws,inUFC:ufc})
     .then(response=>{
         alert("data updated succesfully");
         console.log(response.data);
@@ -28,7 +28,7 @@ return(
   <input placeholder="enter wins(leave if unchanged)"   onChange={(e)=>setWins(e.target.value)} /> <br/>
   <input placeholder="enter draws(leave if unchanged)"  onChange={(e)=>setDraws(e.target.value)} /> <br/>
   <input placeholder="enter losses(leave if unchanged)" onChange={(e)=>setLosses(e.target.value)} /><br/>
-  <input placeholder="currently a UFC athlete (Yes/No)"         onChange={(e)=>setUfc(e.target.value)}/> <br/>
+  <input placeholder="currently a UFC athlete (true/false)"         onChange={(e)=>setUfc(e.target.value)}/> <br/>
   <button onClick={updateRecord}>Update Record</button>
  </div>
 )

@@ -14,7 +14,7 @@ function ShowData(fighterDetails){
       <p>Reach : {fighterDetails.reach_in_cm}cms</p>
       <p>Stance : {fighterDetails.stance}</p>
       <p>Date of Birth :{fighterDetails.date_of_birth}</p>
-      <p>Currently in the UFC :{fighterDetails.UFC}</p>
+      <p>Currently in the UFC :{fighterDetails.inUFC?"Yes":"No"}</p>
         </div>
     )
 }

@@ -15,8 +15,6 @@ function AddNewDetails(){
         stance:"",
         date_of_birth:"",
         inUFC:false
-        
-
    })
    const handleSubmit = async function(){
      try{

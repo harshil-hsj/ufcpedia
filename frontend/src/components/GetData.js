@@ -20,7 +20,7 @@ function GetData() {
     reach_in_cm: 0,
     stance:"",
     date_of_birth:"",
-    UFC:""
+    inUFC:false
 });
   const [fighter,setFighterName ] = useState("fighter info");
   const [flag,setFlag] = useState(false);
@@ -46,7 +46,9 @@ function GetData() {
           weight_in_kg:0,
           reach_in_cm: 0,
           stance:0,
-          date_of_birth:""})
+          date_of_birth:"",
+          inUFC:false
+        })
         alert("data bhejne me dikkt")
         console.log(error);
       });

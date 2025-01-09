@@ -72,6 +72,9 @@ mongoose.connect(`${MONGO_CONN}ufcpedia`, { useNewUrlParser: true, useUnifiedTop
   const Match = mongoose.model('Match',matchSchema,'matchData');
 
   // get image link
+  app.get('/ping',(req,res)=>{
+    res.json("pong");
+  })
   app.get('/getLink',async(req,res)=>{
    try{
     const name = req.query.name?req.query.name:req.query.fighter;

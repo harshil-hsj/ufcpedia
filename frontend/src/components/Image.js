@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './Image.css';
 import { baseUrl } from "../Url";
+
 function Image({name}){
  const [link,setLink] = useState("");
  useEffect(()=>{
  const handleName = async ()=>{
+
     try{
       const res = await axios.get(`${baseUrl}/getLink`,
         {params:{name},}
@@ -17,7 +19,7 @@ function Image({name}){
     catch(error){
       console.log("error ",error);
     }
- };
+  };
  if(name){
   handleName();
  }},[name]);

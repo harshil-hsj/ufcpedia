@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 import './FightersPage.css'
 import axios from 'axios';
 import { baseUrl } from '../Url';
+import { useLocation } from 'react-router-dom';
 const FightersPage = ({fighter}) => {
     const [link,setLink]=useState("");
     useEffect(()=>{
@@ -50,6 +51,7 @@ const FightersPage = ({fighter}) => {
         fetchFighterData();
       }, [fighter]);
   return (
+
     <div className='Page' style={{ backgroundImage: `url(${link})` }}>
       <div className='Info'>
       <h2 >{retData.name}</h2>

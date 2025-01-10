@@ -57,23 +57,18 @@ function HomeUser(){
   return(
   <div className="App">
     <div className="fighters-container">
-      <FightersPage fighter="Dustin Poirier"/>
+    <FightersPage fighter="Zhang Weili"/>
+      <FightersPage fighter="Valentina Shevchenko"/>
+      <FightersPage fighter="Julianna Pena"/>
+      <FightersPage fighter="Alexandre Pantoja"/>
+      <FightersPage fighter="Merab Dvalishvili"/>
       <FightersPage fighter="Ilia Topuria"/>
-      <FightersPage fighter="Conor McGregor"/>
-      <FightersPage fighter="Jon Jones"/>
-      <FightersPage fighter="Charles Oliveira"/>
-      <FightersPage fighter="Tony Ferguson"/>
-      <FightersPage fighter="Dan Hooker"/>
-      <FightersPage fighter="Max Holloway"/>
-      <FightersPage fighter="Donald Cerrone"/>
-      <FightersPage fighter="Robert Whittaker"/>
-      <FightersPage fighter="Israel Adesanya"/>
+      <FightersPage fighter="Islam Makhachev"/>
+      <FightersPage fighter="Belal Muhammad"/>
+      <FightersPage fighter="Dricus Du Plessis"/>
       <FightersPage fighter="Alex Pereira"/>
+      <FightersPage fighter="John Jones"/>
     </div>
-  
-    {/* <div className="buttons">
-      <button onClick={goToGetData}>Get Data</button>
-    </div> */}
   </div>
   )
 }

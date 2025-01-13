@@ -59,14 +59,10 @@ function GetData() {
       <h3>Enter Athletes Name </h3>
       <input type='text' onChange={(e)=>{setFighterName(e.target.value)}} placeholder='type fighters name'/>
       <button className = 'search' onClick={handleData}>Get Data</button>
-      
-   
       <div className = 'show'>
       {retData.name !== "" && <>  <ShowData fighterDetails = {retData}/> <Image name = {retData.name}/>  </> }
-      
-      
       </div>
-      { flag && location.pathname==='/admin' && <button  className='updateRecord' onClick={()=>navigate('/updatedata',{state:{fighterName:retData.name}})}  >Update Athletes Data</button>}
+      { flag && location.pathname==='/getdata' && <button  className='updateRecord' onClick={()=>navigate('/updatedata',{state:{fighterName:retData.name}})}  >Update Athletes Data</button>}
     </div>
   );
 }

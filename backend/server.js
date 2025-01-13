@@ -9,7 +9,7 @@ app.use(cors());
 // Middleware to parse JSON bodies
 app.use(express.json());
 MONGO_CONN = process.env.MONGO_CONN;
-console.log(MONGO_CONN+"okay");
+
 // Connect to MongoDB database
 mongoose.connect(`${MONGO_CONN}ufcpedia`, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -18,7 +18,6 @@ mongoose.connect(`${MONGO_CONN}ufcpedia`, { useNewUrlParser: true, useUnifiedTop
   .catch((err) => {
     console.error('Error connecting to MongoDB:', err);
   });
-
   const fighterSchema = new mongoose.Schema({
     name: { type: String, required: true },
     nickname:{type:String},

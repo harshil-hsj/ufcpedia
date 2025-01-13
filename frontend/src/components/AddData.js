@@ -140,6 +140,7 @@ const handleAdditional = async function () {
 function addToDatabase(){
      axios.post( `${baseUrl}/addFightInfo`,fightDetails)
      .then(response =>{
+      alert("data added successfully");
       console.log("data added succesfully",response.data);
       setFightDetails({
         RedFighter:"",
@@ -169,6 +170,7 @@ function addToDatabase(){
     })
      })
      .catch(error =>{
+      alert("failed to add data");
       console.log("unable to update database",error);
      });
 }

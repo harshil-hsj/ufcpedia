@@ -28,6 +28,7 @@ function AddNewFighter(){
      try{   const response = await axios.get(`${baseUrl}/getFighterInfo`,{
       params:{fighter:name}
     })
+    alert("data added successfully");
     console.log("data received (new fighter added)",response.data);
     setFighterDetails({...response.data});
     }

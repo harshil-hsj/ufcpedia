@@ -1,13 +1,14 @@
 import './GetData.css';
 import React, { useState } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { useLocation,BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import UpdateData from './UpdateData.js'
 import Image from './Image.js'
 import {baseUrl}  from '../Url.js';
 import ShowData from './ShowData.js';
 import './GetData.css';
 function GetData() {
+  const location = useLocation();
   const navigate = useNavigate();
   const [retData, setRetData] = useState({
     name:"",
@@ -55,7 +56,7 @@ function GetData() {
   }
   return (
     <div className='GetData'>
-      
+      <h3>Enter Athletes Name </h3>
       <input type='text' onChange={(e)=>{setFighterName(e.target.value)}} placeholder='type fighters name'/>
       <button className = 'search' onClick={handleData}>Get Data</button>
       
@@ -65,7 +66,7 @@ function GetData() {
       
       
       </div>
-      { flag && <button  className='updateRecord' onClick={()=>navigate('/updatedata',{state:{fighterName:retData.name}})}  >Update Athletes Data</button>}
+      { flag && location.pathname==='/admin' && <button  className='updateRecord' onClick={()=>navigate('/updatedata',{state:{fighterName:retData.name}})}  >Update Athletes Data</button>}
     </div>
   );
 }

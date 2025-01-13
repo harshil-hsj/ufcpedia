@@ -56,22 +56,44 @@ function HomeUser(){
   // }
   return(
   <div className="App">
-    <div className="fighters-container">
+    <h2>CURRENT CHAMPIONS</h2>
+    <div className="champions-container">
+      <h3>Women's Strawweight</h3>
     <FightersPage fighter="Zhang Weili"/>
+    <h3>Women's Flyweight</h3>
       <FightersPage fighter="Valentina Shevchenko"/>
+      <h3>Women's Bantamweight</h3>
       <FightersPage fighter="Julianna Pena"/>
+      <h3>Flyweight</h3>
       <FightersPage fighter="Alexandre Pantoja"/>
+      <h3>Bantamweight</h3>
       <FightersPage fighter="Merab Dvalishvili"/>
+      <h3>Featherweight</h3>
       <FightersPage fighter="Ilia Topuria"/>
+      <h3>Lightweight</h3>
       <FightersPage fighter="Islam Makhachev"/>
+      <h3>Welterweight</h3>
       <FightersPage fighter="Belal Muhammad"/>
+      <h3>Middleweight</h3>
       <FightersPage fighter="Dricus Du Plessis"/>
+      <h3>Light Heavyweight</h3>
       <FightersPage fighter="Alex Pereira"/>
-      <FightersPage fighter="John Jones"/>
+      <h3>Heavyweight</h3>
+      <FightersPage fighter="Jon Jones"/>
     </div>
   </div>
   )
 }
+
+
+
+
+
+
+
+
+
+
 function Home(){
   const navigate = useNavigate();
    const [adminPassword,setPassword] = useState("");
@@ -109,7 +131,7 @@ function Home(){
       <FightersPage fighter="Israel Adesanya"/>
       <FightersPage fighter="Alex Pereira"/>
     </div>
-    <div className="buttons">
+    {/* <div className="buttons">
     <button onClick={() => setAdmin(true)}>ADMIN</button>
 {admin && (
   <div>
@@ -126,7 +148,7 @@ function Home(){
       
       <br/><br />
       <button onClick={goToUser}>USER</button>
-    </div>
+    </div> */}
       </div>
    )
 }
@@ -139,6 +161,7 @@ function MainApp() {
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<HomeAdmin/>}/>
         <Route path="/user"element={<HomeUser/>}/>
+        <Route path="/athlete"element={<GetData/>}/>
         <Route path="/adddata" element={<AddData />} /> {/* AddData Component */}
         <Route path="/getdata" element={<GetData />} /> {/* GetData Component */}
         <Route path="/updatedata" element={<UpdateData/>} />

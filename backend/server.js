@@ -121,13 +121,13 @@ app.get('/getFighterInfo',async(req,res)=>{
    }
 });
 
-
-
 ///Add fights info in Match
 app.post('/addFightInfo', async (req, res) => {
+  console.log(req.body);
   try {
     const latestMatch = await Match.findOne().sort({ fightNumber: -1 });
     const nextFightNumber = latestMatch ? latestMatch.fightNumber + 1 : 1; 
+   
     const match = new Match({
       ...req.body,
       fightNumber: nextFightNumber, 

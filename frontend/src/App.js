@@ -7,9 +7,25 @@ import UpdateData from './components/UpdateData';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { useState } from 'react';
+import Papa from 'papaparse';
 import FightersPage from './components/FightersPage';
+import axios from 'axios';
+import { baseUrl } from './Url';
+
 const password = process.env.REACT_APP_PASSWORD;
 function HomeAdmin() {
+  
+function calculateAge(dateOfBirth) {
+  const [day, month, year] = dateOfBirth.split('-').map(Number);
+  const birthDate = new Date(year, month - 1, day); 
+  const currentDate = new Date();
+  let age = currentDate.getFullYear() - birthDate.getFullYear();
+  const monthDifference = currentDate.getMonth() - birthDate.getMonth();
+  if (monthDifference < 0 || (monthDifference === 0 && currentDate.getDate() < birthDate.getDate())) {
+      age--;
+  }
+  return age;
+}
   const navigate = useNavigate();
 
   // Functions for navigation
@@ -22,9 +38,75 @@ function HomeAdmin() {
   function goToAddNewFighter(){
     navigate('/addnewfighter');
   }
+  let arr =[];
+  const handleCsv = async(e)=>{
+    const file = e.target.files[0];
+    Papa.parse(file,{
+      step:(row)=>{
+        console.log(row.data);
+        if(row.data.BlueFighter!==undefined && row.data.BlueFighter.length>0)
+         arr.unshift(row.data);
+      },
+      complete:()=>{
+        console.log('parsed result')
+        console.log(arr);
+      },
+      header:true,
+    });
+  };
+  const addCsvFile = async()=>{
+    if(arr.length === 0){
+      alert("no data to add from csv file");
+      return;
+    }
+    for(const row of arr){
+      try{
+        const redFighter = await axios.get(`${ baseUrl }/getFighterInfo`,{
+          params:{fighter:row.RedFighter}
+        });
+        row.RedFighter = redFighter.data.name;
+        row.RedStance = redFighter.data.stance;
+        row.RedHeightCms = redFighter.data.height_cm;
+        row.RedReachCms = redFighter.data.reach_in_cm;
+        row.RedAge = calculateAge(redFighter.data.date_of_birth);
+      }catch(error){
+        console.log("failed while at redFighter",error);
+        return;
+      }
+      try{
+        const blueFighter = await axios.get(`${ baseUrl }/getFighterInfo`,{
+          params:{fighter:row.BlueFighter}
+        })
+        row.blueFighter = blueFighter.data.name;
+        row.BlueStance = blueFighter.data.stance;
+        row.BlueHeightCms = blueFighter.data.height_cm;
+        row.BlueReachCms = blueFighter.data.reach_in_cm;
+        row.BlueAge = calculateAge(blueFighter.data.date_of_birth);
+      }
+      catch(error){
+        console.log("error while catching blue figher",error);
+        return;
+      }
+
+
+      row.BlueOdds = parseInt(row.BlueOdds);
+      row.RedOdds =  parseInt(row.RedOdds);
+      row.TitleBout = JSON.parse(row.TitleBout.toLowerCase());
+      console.log(row);
+      try{
+         
+         const res = await axios.post(`${baseUrl}/addFightInfo`,row);
+         console.log("data added b/w"+row.RedFighter+" "+row.BlueFighter+res.data);
+      }catch(error){
+         console.log("failed at "+row.RedFighter+" "+row.BlueFighter);
+      }
+    }
+    alert("data added successfully from csv file");
+  }
+
   return (
-    <div className="App">
-    <div className="fighters-container">
+    <div className="Admin">
+    {/* <div className="fighters-container">
       <FightersPage fighter="Dustin Poirier"/>
       <FightersPage fighter="Ilia Topuria"/>
       <FightersPage fighter="Conor McGregor"/>
@@ -37,14 +119,17 @@ function HomeAdmin() {
       <FightersPage fighter="Robert Whittaker"/>
       <FightersPage fighter="Israel Adesanya"/>
       <FightersPage fighter="Alex Pereira"/>
-    </div>
+    </div> */}
   
     <div className="buttons">
-      <button onClick={goToAddData}>Add Data</button>
+      <button  onClick={goToAddData}>Add Data</button>
       <br/><br />
       <button onClick={goToGetData}>Get Data</button>
       <br /><br />
       <button onClick={goToAddNewFighter}>Add New Fighter</button>
+      <br/>
+      <input type='file' accept = '.csv' placeholder='import csv file' onChange={handleCsv}/>
+      <button onClick={addCsvFile}>Add Fight Card</button>
     </div>
   </div>
   );
@@ -55,7 +140,7 @@ function HomeUser(){
   //   navigate('/getdata');
   // }
   return(
-  <div className="App">
+  <div className="User">
     <h2>CURRENT CHAMPIONS</h2>
     <div className="champions-container">
       <h3>Women's Strawweight</h3>

@@ -30,7 +30,7 @@ const [redFighterDetails , setRedFighterDetails] = useState({
 })
 
 function calculateAge(dateOfBirth) {
-     const [day, month, year] = dateOfBirth.split('-').map(Number);
+     const [day, month, year] = dateOfBirth[2] === '-'?dateOfBirth.split('-').map(Number):dateOfBirth.split('/').map(Number);
      const birthDate = new Date(year, month - 1, day); 
      const currentDate = new Date();
      let age = currentDate.getFullYear() - birthDate.getFullYear();
@@ -40,6 +40,7 @@ function calculateAge(dateOfBirth) {
      }
      return age;
  }
+ module.exports = {calculateAge};
 const [blueFighter,setBlueFighter] = useState("");
 const [blueFighterDetails,setBlueFighterDetails] = useState({
     name:"",

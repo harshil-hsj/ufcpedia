@@ -6,7 +6,7 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const password = process.env.REACT_APP_PASSWORD;
-  // Define the routes
+ //paths
   const routes = [
     { path: '/', label: 'Home' },
     { path: '/user', label: 'User' },
@@ -19,7 +19,7 @@ const Navbar = () => {
     if (password === enteredPassword) {
       navigate('/admin'); 
     } else {
-      alert('Incorrect password. Access denied.');
+      alert('Incorrect password! Access denied');
     }
   };
   return (

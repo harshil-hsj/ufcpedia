@@ -50,7 +50,7 @@ function GetData() {
           date_of_birth:"",
           inUFC:false
         })
-        alert("data bhejne me dikkt")
+        alert("data cannot be retrieved");
         console.log(error);
       });
   }

@@ -23,7 +23,6 @@ function Image({name}){
  if(name){
   handleName();
  }},[name]);
-
  return(
     <div className="Image">
       { link && 

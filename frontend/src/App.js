@@ -8,10 +8,11 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import Navbar from './components/Navbar';
 import { useState } from 'react';
 import Papa from 'papaparse';
-import FightersPage from './components/FightersPage';
+// import FightersPage from './components/FightersPage';
 import axios from 'axios';
 import { baseUrl } from './Url';
-
+import { Suspense,lazy } from 'react';
+const FightersPage = lazy(()=>import('./components/FightersPage'));
 const password = process.env.REACT_APP_PASSWORD;
 function HomeAdmin() {
   
@@ -106,21 +107,6 @@ function calculateAge(dateOfBirth) {
 
   return (
     <div className="Admin">
-    {/* <div className="fighters-container">
-      <FightersPage fighter="Dustin Poirier"/>
-      <FightersPage fighter="Ilia Topuria"/>
-      <FightersPage fighter="Conor McGregor"/>
-      <FightersPage fighter="Jon Jones"/>
-      <FightersPage fighter="Charles Oliveira"/>
-      <FightersPage fighter="Tony Ferguson"/>
-      <FightersPage fighter="Dan Hooker"/>
-      <FightersPage fighter="Max Holloway"/>
-      <FightersPage fighter="Donald Cerrone"/>
-      <FightersPage fighter="Robert Whittaker"/>
-      <FightersPage fighter="Israel Adesanya"/>
-      <FightersPage fighter="Alex Pereira"/>
-    </div> */}
-  
     <div className="buttons">
       <button  onClick={goToAddData}>Add Data</button>
       <br/><br />
@@ -136,35 +122,64 @@ function calculateAge(dateOfBirth) {
 }
 function HomeUser(){
   const navigate = useNavigate();
-  // function goToGetData(){
-  //   navigate('/getdata');
-  // }
   return(
-  <div className="User">
+    <div className="User">
     <h2>CURRENT CHAMPIONS</h2>
     <div className="champions-container">
       <h3>Women's Strawweight</h3>
-    <FightersPage fighter="Zhang Weili"/>
-    <h3>Women's Flyweight</h3>
-      <FightersPage fighter="Valentina Shevchenko"/>
+      <Suspense fallback={<div>Loading Fighter...</div>}>
+        <FightersPage fighter="Zhang Weili" />
+      </Suspense>
+
+      <h3>Women's Flyweight</h3>
+      <Suspense fallback={<div>Loading Fighter...</div>}>
+        <FightersPage fighter="Valentina Shevchenko" />
+      </Suspense>
+
       <h3>Women's Bantamweight</h3>
-      <FightersPage fighter="Julianna Pena"/>
+      <Suspense fallback={<div>Loading Fighter...</div>}>
+        <FightersPage fighter="Julianna Pena" />
+      </Suspense>
+
       <h3>Flyweight</h3>
-      <FightersPage fighter="Alexandre Pantoja"/>
+      <Suspense fallback={<div>Loading Fighter...</div>}>
+        <FightersPage fighter="Alexandre Pantoja" />
+      </Suspense>
+
       <h3>Bantamweight</h3>
-      <FightersPage fighter="Merab Dvalishvili"/>
+      <Suspense fallback={<div>Loading Fighter...</div>}>
+        <FightersPage fighter="Merab Dvalishvili" />
+      </Suspense>
+
       <h3>Featherweight</h3>
-      <FightersPage fighter="Ilia Topuria"/>
+      <Suspense fallback={<div>Loading Fighter...</div>}>
+        <FightersPage fighter="Ilia Topuria" />
+      </Suspense>
+
       <h3>Lightweight</h3>
-      <FightersPage fighter="Islam Makhachev"/>
+      <Suspense fallback={<div>Loading Fighter...</div>}>
+        <FightersPage fighter="Islam Makhachev" />
+      </Suspense>
+
       <h3>Welterweight</h3>
-      <FightersPage fighter="Belal Muhammad"/>
+      <Suspense fallback={<div>Loading Fighter...</div>}>
+        <FightersPage fighter="Belal Muhammad" />
+      </Suspense>
+
       <h3>Middleweight</h3>
-      <FightersPage fighter="Dricus Du Plessis"/>
+      <Suspense fallback={<div>Loading Fighter...</div>}>
+        <FightersPage fighter="Dricus Du Plessis" />
+      </Suspense>
+
       <h3>Light Heavyweight</h3>
-      <FightersPage fighter="Alex Pereira"/>
+      <Suspense fallback={<div>Loading Fighter...</div>}>
+        <FightersPage fighter="Alex Pereira" />
+      </Suspense>
+
       <h3>Heavyweight</h3>
-      <FightersPage fighter="Jon Jones"/>
+      <Suspense fallback={<div>Loading Fighter...</div>}>
+        <FightersPage fighter="Jon Jones" />
+      </Suspense>
     </div>
   </div>
   )
@@ -203,6 +218,7 @@ function Home(){
    return(
       <div className='Home'>
         <div className="fighters-container">
+      <Suspense fallback={<div>Loading Fighters...</div>}>
       <FightersPage fighter="Dustin Poirier"/>
       <FightersPage fighter="Ilia Topuria"/>
       <FightersPage fighter="Conor McGregor"/>
@@ -215,25 +231,8 @@ function Home(){
       <FightersPage fighter="Robert Whittaker"/>
       <FightersPage fighter="Israel Adesanya"/>
       <FightersPage fighter="Alex Pereira"/>
+      </Suspense>
     </div>
-    {/* <div className="buttons">
-    <button onClick={() => setAdmin(true)}>ADMIN</button>
-{admin && (
-  <div>
-    <input 
-      type="password" 
-      placeholder="Enter Admin Password" 
-      onChange={(e) => setPassword(e.target.value)} 
-    />
-    <button onClick={checkPassword}>Enter</button>
-  </div>
-)}
-
-
-      
-      <br/><br />
-      <button onClick={goToUser}>USER</button>
-    </div> */}
       </div>
    )
 }

@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import Navbar from './components/Navbar';
 import { useState } from 'react';
 import Papa from 'papaparse';
+import Rankings from './components/Information/Rankings';
 // import FightersPage from './components/FightersPage';
 import axios from 'axios';
 import { baseUrl } from './Url';
@@ -128,57 +129,57 @@ function HomeUser(){
     <div className="champions-container">
       <h3>Women's Strawweight</h3>
       <Suspense fallback={<div>Loading Fighter...</div>}>
-        <FightersPage fighter="Zhang Weili" />
+        <FightersPage fighter="Zhang Weili"  division="WomensStrawweight"/>
       </Suspense>
 
       <h3>Women's Flyweight</h3>
       <Suspense fallback={<div>Loading Fighter...</div>}>
-        <FightersPage fighter="Valentina Shevchenko" />
+        <FightersPage fighter="Valentina Shevchenko" division="WomensFlyweight"/>
       </Suspense>
 
       <h3>Women's Bantamweight</h3>
       <Suspense fallback={<div>Loading Fighter...</div>}>
-        <FightersPage fighter="Julianna Pena" />
+        <FightersPage fighter="Julianna Pena" division="WomensBantamweight" />
       </Suspense>
 
       <h3>Flyweight</h3>
       <Suspense fallback={<div>Loading Fighter...</div>}>
-        <FightersPage fighter="Alexandre Pantoja" />
+        <FightersPage fighter="Alexandre Pantoja" division="Flyweight"/>
       </Suspense>
 
       <h3>Bantamweight</h3>
       <Suspense fallback={<div>Loading Fighter...</div>}>
-        <FightersPage fighter="Merab Dvalishvili" />
+        <FightersPage fighter="Merab Dvalishvili" division="Bantamweight"/>
       </Suspense>
 
       <h3>Featherweight</h3>
       <Suspense fallback={<div>Loading Fighter...</div>}>
-        <FightersPage fighter="Ilia Topuria" />
+        <FightersPage fighter="Ilia Topuria" division="Featherweight" />
       </Suspense>
 
       <h3>Lightweight</h3>
       <Suspense fallback={<div>Loading Fighter...</div>}>
-        <FightersPage fighter="Islam Makhachev" />
+        <FightersPage fighter="Islam Makhachev" division="Lightweight"/>
       </Suspense>
 
       <h3>Welterweight</h3>
       <Suspense fallback={<div>Loading Fighter...</div>}>
-        <FightersPage fighter="Belal Muhammad" />
+        <FightersPage fighter="Belal Muhammad" division="Welterweight" />
       </Suspense>
 
       <h3>Middleweight</h3>
       <Suspense fallback={<div>Loading Fighter...</div>}>
-        <FightersPage fighter="Dricus Du Plessis" />
+        <FightersPage fighter="Dricus Du Plessis" division="Middleweight"/>
       </Suspense>
 
       <h3>Light Heavyweight</h3>
       <Suspense fallback={<div>Loading Fighter...</div>}>
-        <FightersPage fighter="Alex Pereira" />
+        <FightersPage fighter="Alex Pereira" division="LightHeavyweight"/>
       </Suspense>
 
       <h3>Heavyweight</h3>
       <Suspense fallback={<div>Loading Fighter...</div>}>
-        <FightersPage fighter="Jon Jones" />
+        <FightersPage fighter="Jon Jones" division="Heavyweight"/>
       </Suspense>
     </div>
   </div>
@@ -246,6 +247,7 @@ function MainApp() {
         <Route path="/admin" element={<HomeAdmin/>}/>
         <Route path="/user"element={<HomeUser/>}/>
         <Route path="/athlete"element={<GetData/>}/>
+        <Route path="/rankings"element={<Rankings/>}/>
         <Route path="/adddata" element={<AddData />} /> {/* AddData Component */}
         <Route path="/getdata" element={<GetData />} /> {/* GetData Component */}
         <Route path="/updatedata" element={<UpdateData/>} />

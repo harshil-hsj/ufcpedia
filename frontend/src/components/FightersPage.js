@@ -3,9 +3,11 @@ import { useState,useEffect } from 'react';
 import './FightersPage.css'
 import axios from 'axios';
 import { baseUrl } from '../Url';
-import { useLocation } from 'react-router-dom';
-const FightersPage = ({fighter}) => {
+import { useLocation, useNavigate } from 'react-router-dom';
+const FightersPage = ({fighter , division}) => {
     const [link,setLink]=useState("");
+    const navigate = useNavigate();
+    const location = useLocation();
     useEffect(()=>{
       const handleName = async ()=>{
          try{
@@ -50,9 +52,16 @@ const FightersPage = ({fighter}) => {
         };
         fetchFighterData();
       }, [fighter]);
+    const handleClick = ()=>{
+        console.log(location);
+        if( location.pathname ==='/user'){
+        navigate('/rankings' , {state:{division}});
+        }
+      
+    }
   return (
 
-    <div className='Page' style={{ backgroundImage: `url(${link})` }}>
+    <div className='Page' onClick={handleClick} style={{ backgroundImage: `url(${link})` }}>
       <div className='Info'>
       <h2 >{retData.name}</h2>
       <h3> {retData.nickname}</h3>
